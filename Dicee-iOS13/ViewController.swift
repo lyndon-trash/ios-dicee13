@@ -10,8 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private let DICE_OPTIONS = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
-    
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
@@ -20,8 +18,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func roll(_ sender: UIButton) {
-        diceImageView1.image = DICE_OPTIONS[Int.random(in: 1...5)]
-        diceImageView2.image = DICE_OPTIONS[Int.random(in: 1...5)]
+        diceImageView1.image = randomDice()
+        diceImageView2.image = randomDice()
+    }
+    
+    private func randomDice() -> UIImage {
+        let dice =  [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
+        return dice[Int.random(in: 0..<dice.count)]
     }
 }
 
